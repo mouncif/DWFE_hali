@@ -10,7 +10,8 @@ const routes: Routes = [
   {path: 'gestionVente', component: GestionDesVentesComponent},
   {path: 'gestionuser', component: GestionDesUtilisateuresComponent},
   {path: 'gestionDroit', component: GestionDesDroitsComponent},
-  {path :'produit', component: ProduitComponent}
+  {path :'produit', component: ProduitComponent},
+  {path: '', component: GestionDesVentesComponent}
  
 ];
 
