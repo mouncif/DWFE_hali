@@ -10,6 +10,11 @@ import { TopBarNavComponent } from './top-bar-nav/top-bar-nav.component';
 import { GestionDesVentesComponent } from './gestion-des-ventes/gestion-des-ventes.component';
 import { GestionDesUtilisateuresComponent } from './gestion-des-utilisateures/gestion-des-utilisateures.component';
 import { GestionDesDroitsComponent } from './gestion-des-droits/gestion-des-droits.component';
+import { DroitService } from './Services/service droit/droit.service';
+import { UtilisateurService } from './Services/service utilisateur/utilisateur.service';
+import { ProduitComponent } from './gestion-des-ventes/produit/produit.component';
+import { FournisseurComponent } from './gestion-des-ventes/fournisseur/fournisseur.component';
+import { ClientComponent } from './gestion-des-ventes/client/client.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +25,16 @@ import { GestionDesDroitsComponent } from './gestion-des-droits/gestion-des-droi
 
     GestionDesVentesComponent,
     GestionDesUtilisateuresComponent,
-    GestionDesDroitsComponent
+    GestionDesDroitsComponent,
+    ProduitComponent,
+    FournisseurComponent,
+    ClientComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [DroitService , UtilisateurService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
