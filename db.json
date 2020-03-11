@@ -1,0 +1,64 @@
+{
+  "produit": [
+    {
+      "id": 4,
+      "nom": "prodruit 3",
+      "nomcourt": "pr3",
+      "prixbase": 15,
+      "prixvente": 15,
+      "seuilremise": 45,
+      "unite": "littre",
+      "image": "C:\\fakepath\\IMG_20200310_121121.jpg",
+      "qteinitstock": 15,
+      "qteactuelstock": 14
+    },
+    {
+      "id": 5,
+      "nom": "hg",
+      "nomcourt": "hg",
+      "prixbase": 12,
+      "prixvente": 120,
+      "seuilremise": 450,
+      "unite": "khhk",
+      "image": "C:\\fakepath\\IMG_20200310_121250.jpg",
+      "qteinitstock": 65,
+      "qteactuelstock": 98
+    }
+  ],
+  "fournisseur": [
+    {
+      "id": 1,
+      "nom": "fr1",
+      "nomcourt": "fr1",
+      "telfix": "646",
+      "telmobile": "323332",
+      "fax": "3233",
+      "ville": "marrakech",
+      "adresse": "maroca",
+      "email": "fr@gmail.comm"
+    }
+  ],
+  "client": [
+    {
+      "id": 1,
+      "nom": "soso",
+      "prenom": "soso",
+      "email": "soso@gmail.com",
+      "tel": "25434563",
+      "ville": "marrakech",
+      "photo": null,
+      "adresse": "maroc",
+      "status": "adminn"
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "profil": "editor",
+      "date_creation": "2020-03-25",
+      "email": "editor@gmail.com",
+      "date_fin": "2020-03-26",
+      "photo": "C:\\fakepath\\WIN_20190922_04_28_26_Pro.jpg"
+    }
+  ]
+}

@@ -1,71 +1,222 @@
 <div class="page-wrapper">
-    <div class="clr">
-        <div class="col-md-5 align-self-center">
-            <h3 class="title">Gestion Des Ventes</h3>
-        </div>
-        <div class="col-md-7 align-self-center">
-
-            <form class="">
-                <a class=""><i class="mdi mdi-account-search"></i></a>
-            </form>
-
-            
-        </div>
+  <div class="clr">
+    <div class="col-md-5 align-self-center">
+      <h3 class="title">Gestion Des Ventes</h3>
     </div>
-    <ul class="nav nav-tabs cls">
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="/produit">Produit</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Fournisseur</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Droit</a>
-        </li>
+  </div>
+  <ul class="nav nav-tabs cls">
+    <li class="nav-item">
+      <a class="nav-link active" routerLink="/produit">Produit</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/fournisseur">Fournisseur</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/client">Client</a>
+    </li>
+  </ul>
+
+  <div class="ajout">
+    <div class="row page-titles">
+      <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor"></h3>
+      </div>
+      <div class="col-md-7 align-self-center">
+        <button
        
-      </ul>
-    
+          type="button"
+          class="btn waves-effect waves-light btn-info pull-right hidden-sm-down"
+          data-toggle="modal"
+          data-target=".bd-example-modal-lg"  (click)='onAdd();changeajout()'
+        >
+          Ajout Produit
+        </button>
+      </div>
+    </div>
 
-     <div class="container ajout">
-        <form>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputEmail4">Nom produit</label>
-                <input type="text" class="form-control" id="inputEmail4" placeholder="Nom Produit">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputPassword4">Nom court Produit</label>
-                <input type="text" class="form-control" id="inputPassword4" placeholder="court">
-              </div>
+    <div
+      class="modal fade bd-example-modal-lg"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myLargeModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              {{val}}
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div
+              *ngIf="alertStatus.enabled"
+              [ngClass]="alertStatus.class"
+              class="alert"
+            >
+              <span (click)="closeAlert()" href="#" class="close">×</span>
+              <p [innerText]="alertStatus.message"></p>
             </div>
-            <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputAddress">prix de base du produit</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="prix de base du produitt">
-            </div>
+            <!--form start here-->
+            <form [formGroup]="service.form" (submit)="onSubmit()">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input type="hidden" formControlName="id" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputEmail4"
+                    placeholder="Nom Produit"
+                    formControlName="nom"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputPassword4"
+                    placeholder="Nom court"
+                    formControlName="nomcourt"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="inputAddress"
+                    placeholder="prix de base du produit"
+                    formControlName="prixbase"
+                  />
+                </div>
 
-            <div class="form-group col-md-6">
-              <label for="inputAddress2"> prix de vente du produit</label>
-              <input type="text" class="form-control" id="inputAddress2" placeholder=" prix de vente du produit">
-            </div>
-        </div>
-        <div class="form-row">
-
-            <div class="form-group col-md-3">
-                <label for="inputAddress2">  seuil max de remise du produit,</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder=" seuil max de remise du produit,">
+                <div class="form-group col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress2"
+                    placeholder=" prix de vente du produit"
+                    formControlName="prixvente"
+                  />
+                </div>
               </div>
-              <div class="form-group col-md-3">
-                <label for="inputAddress2">  Quantite</label>
-                <input type="number" class="form-control" id="inputAddress2" placeholder=" Quantite">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress2"
+                    placeholder=" seuil max de remise du produit"
+                    formControlName="seuilremise"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress2"
+                    placeholder=" unite"
+                    formControlName="unite"
+                  />
+                </div>
               </div>
-        </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress2"
+                    placeholder=" Quantite"
+                    formControlName="qteinitstock"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress2"
+                    placeholder=" Quantite"
+                    formControlName="qteactuelstock"
+                  />
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <input type="file" formControlName="image" />
+              </div>
+            
+                <button type="submit" class="btn btn-success" >
+                 {{val}}
+                </button>
            
-           
-        
-            <button type="submit" class="btn btn-primary">Ajouter Produit</button>
-          </form>   
-     </div>
+             
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- column -->
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Liste des produits</h4>
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#ID</th>
+                    <th>Nom</th>
+                    <th>Nom Court</th>
+                    <th>Prix de base</th>
+                    <th>Prix de vente</th>
+                    <th>Seuil remise</th>
+                    <th>Unite</th>
+                    <th>image</th>
+                    <th>Quantite initiale stock</th>
+                    <th>Quantite actuel stock</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let pr of produits; let i = index">
+                    <td>{{ pr.id }}</td>
+                    <td>{{ pr.nom }}</td>
+                    <td>{{ pr.nomcourt }}</td>
+                    <td>{{ pr.prixbase }}</td>
+                    <td>{{ pr.prixvente }}</td>
+                    <td>{{ pr.seuilremise }}</td>
+                    <td>{{ pr.unite }}</td>
+                    <td>{{ pr.image }}</td>
+                    <td>{{ pr.qteinitstock }}</td>
+                    <td>{{ pr.qteactuelstock }}</td>
+                    <td>
+                      <button class="btn btn-danger" (click)="onEdit(pr);changemodif()" data-toggle="modal"
+                      data-target=".bd-example-modal-lg">
+                        <i class="mdi mdi-brush"></i>
+                      </button>
+
+                      <button class="btn btn-warning" (click)="onDelete(pr.id)">
+                        <i class="mdi mdi-delete-forever"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-

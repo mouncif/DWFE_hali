@@ -1,29 +1,176 @@
-
 <div class="page-wrapper">
-
-
-    <div class="clr">
-        <div class="col-md-5 align-self-center">
-            <h3 class="title">Gestion Des utilsateurs</h3>
-        </div>
-        <div class="col-md-7 align-self-center">
-
-            <form class="">
-                <a class=""><i class="mdi mdi-account-search"></i></a>
-            </form>
-
-            
-        </div>
+  <div class="clr">
+    <div class="col-md-5 align-self-center">
+      <h3 class="title">Gestion Des utilsateurs</h3>
     </div>
-    <ul class="nav nav-tabs cls">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">ajouter</a>
-        </li>
-      
-       
-      </ul>
+  </div>
+  <ul class="nav nav-tabs cls">
+    <li class="nav-item"></li>
+  </ul>
+  <div class="ajout">
+    <div class="row page-titles">
+      <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor"></h3>
+      </div>
+      <div class="col-md-7 align-self-center">
+        <button
+          type="button"
+          class="btn waves-effect waves-light btn-info pull-right hidden-sm-down"
+          data-toggle="modal"
+          data-target=".bd-example-modal-lg"
+          (click)="onAdd(); changeajout()"
+        >
+          Ajout Utilisateur
+        </button>
+      </div>
+    </div>
 
-  
+    <div
+      class="modal fade bd-example-modal-lg"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myLargeModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              {{ val }}
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div
+              *ngIf="alertStatus.enabled"
+              [ngClass]="alertStatus.class"
+              class="alert"
+            >
+              <span (click)="closeAlert()" href="#" class="close">×</span>
+              <p [innerText]="alertStatus.message"></p>
+            </div>
+            <!--form start here-->
+            <form [formGroup]="service.form" (submit)="onSubmit()">
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <input type="hidden" formControlName="id" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputEmail4"
+                    placeholder="profil"
+                    formControlName="profil"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="inputAddress"
+                    placeholder="date creation"
+                    formControlName="date_creation"
+                  />
+                </div>
+
+                <div class="form-group col-md-6">
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="inputAddress2"
+                    placeholder=" date fin"
+                    formControlName="date_fin"
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress2"
+                    placeholder="email"
+                    formControlName="email"
+                  />
+                </div>
+                <div class="form-group col-md-4">
+                  <input type="file" formControlName="photo" />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                class="btn btn-success"
+                
+              >
+                {{ val }}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- column -->
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Liste des Utilisateurs</h4>
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#ID</th>
+                    <th>profile</th>
+                    <th>date_creation</th>
+                    <th>date_fin</th>
+                    <th>Photo</th>
+
+                    <th>email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let cl of users; let i = index">
+                    <td>{{ cl.id }}</td>
+                    <td>{{ cl.profil }}</td>
+                    <td>{{ cl.date_creation }}</td>
+                    <td>{{ cl.date_fin }}</td>
+                    <td>{{ cl.photo }}</td>
+
+                    <td>{{ cl.email }}</td>
+
+                    <td>
+                      <button
+                        class="btn btn-danger"
+                        (click)="onEdit(cl); changemodif()"
+                        data-toggle="modal"
+                        data-target=".bd-example-modal-lg"
+                      >
+                        <i class="mdi mdi-brush"></i>
+                      </button>
+
+                      <button class="btn btn-warning" (click)="onDelete(cl.id)">
+                        <i class="mdi mdi-delete-forever"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-

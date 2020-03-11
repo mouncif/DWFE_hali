@@ -1,31 +1,19 @@
 <div class="page-wrapper">
-    <div class="clr">
-        <div class="col-md-5 align-self-center">
-            <h3 class="title">Gestion Des Ventes</h3>
-        </div>
-        <div class="col-md-7 align-self-center">
-
-            <form class="">
-                <a class=""><i class="mdi mdi-account-search"></i></a>
-            </form>
-
-            
-        </div>
+  <div class="clr">
+    <div class="col-md-5 align-self-center">
+      <h3 class="title">Gestion Des Ventes</h3>
     </div>
-    <ul class="nav nav-tabs cls">
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="/produit">Produit</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Fournisseur</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Droit</a>
-        </li>
-       
-      </ul>
-    
-
-     
+  </div>
+  <ul class="nav nav-tabs cls">
+    <li class="nav-item">
+      <a class="nav-link active" routerLink="/produit">Produit</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/fournisseur">Fournisseur</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/client">Client</a>
+    </li>
+  </ul>
+  <router-outlet></router-outlet>
 </div>
-

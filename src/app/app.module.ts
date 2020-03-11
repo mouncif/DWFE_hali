@@ -15,13 +15,18 @@ import { UtilisateurService } from './Services/service utilisateur/utilisateur.s
 import { ProduitComponent } from './gestion-des-ventes/produit/produit.component';
 import { FournisseurComponent } from './gestion-des-ventes/fournisseur/fournisseur.component';
 import { ClientComponent } from './gestion-des-ventes/client/client.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
+    ProduitComponent,
     AppComponent,
+    
     SideBarNavComponent,
     TopBarNavComponent,
-
+    
 
     GestionDesVentesComponent,
     GestionDesUtilisateuresComponent,
@@ -32,7 +37,12 @@ import { ClientComponent } from './gestion-des-ventes/client/client.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule
+
   ],
   providers: [DroitService , UtilisateurService],
   bootstrap: [AppComponent]

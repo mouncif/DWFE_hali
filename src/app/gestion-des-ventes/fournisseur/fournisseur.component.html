@@ -1,1 +1,220 @@
-<p>fournisseur works!</p>
+<div class="page-wrapper">
+  <div class="clr">
+    <div class="col-md-5 align-self-center">
+      <h3 class="title">Gestion Des Ventes</h3>
+    </div>
+  </div>
+  <ul class="nav nav-tabs cls">
+    <li class="nav-item">
+      <a class="nav-link active" routerLink="/produit">Produit</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/fournisseur">Fournisseur</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/client">Client</a>
+    </li>
+  </ul>
+
+  <div class="ajout">
+    <div class="row page-titles">
+      <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor"></h3>
+      </div>
+      <div class="col-md-7 align-self-center">
+        <button
+       
+          type="button"
+          class="btn waves-effect waves-light btn-info pull-right hidden-sm-down"
+          data-toggle="modal"
+          data-target=".bd-example-modal-lg"  (click)='onAdd();changeajout()'
+        >
+          Ajout Fournisseur
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="modal fade bd-example-modal-lg"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myLargeModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              {{val}}
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div
+              *ngIf="alertStatus.enabled"
+              [ngClass]="alertStatus.class"
+              class="alert"
+            >
+              <span (click)="closeAlert()" href="#" class="close">×</span>
+              <p [innerText]="alertStatus.message"></p>
+            </div>
+            <!--form start here-->
+            <form [formGroup]="service.form" (submit)="onSubmit()">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input type="hidden" formControlName="id" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputEmail4"
+                    placeholder="Nom Fournisseur"
+                    formControlName="nom"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputPassword4"
+                    placeholder="Nom court"
+                    formControlName="nomcourt"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress"
+                    placeholder="ville"
+                    formControlName="ville"
+                  />
+                </div>
+
+                <div class="form-group col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress2"
+                    placeholder=" adresse"
+                    formControlName="adresse"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress2"
+                    placeholder=" telfix"
+                    formControlName="telfix"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress2"
+                    placeholder=" telmobile"
+                    formControlName="telmobile"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress2"
+                    placeholder=" fax"
+                    formControlName="fax"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress2"
+                    placeholder=" email"
+                    formControlName="email"
+                  />
+                </div>
+              </div>
+         
+            
+                <button type="submit" class="btn btn-success" >
+                 {{val}}
+                </button>
+           
+             
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- column -->
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Liste des Fournisseurs</h4>
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#ID</th>
+                    <th>Nom</th>
+                    <th>Nom Court</th>
+                    <th>Ville</th>
+                    <th>Adresse</th>
+                    <th>Telfix</th>
+                    <th>Telmobile</th>
+                    <th>Fax</th>
+                    <th>Email</th>
+            
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let fr of fournisseurs; let i = index">
+                    <td>{{ fr.id }}</td>
+                    <td>{{ fr.nom }}</td>
+                    <td>{{ fr.nomcourt }}</td>
+                    <td>{{ fr.ville }}</td>
+                    <td>{{ fr.adresse }}</td>
+                    <td>{{ fr.telfix }}</td>
+                    <td>{{ fr.telmobile }}</td>
+                    <td>{{ fr.fax }}</td>
+                    <td>{{ fr.email }}</td>
+                    
+                    <td>
+                      <button class="btn btn-danger" (click)="onEdit(fr);changemodif()" data-toggle="modal"
+                      data-target=".bd-example-modal-lg">
+                        <i class="mdi mdi-brush"></i>
+                      </button>
+
+                      <button class="btn btn-warning" (click)="onDelete(fr.id)">
+                        <i class="mdi mdi-delete-forever"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
