@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.24.
 
 quick view : 
-https://github.com/mouncif/DWFE_hali/issues/1#issue-579436886
+![alt text](https://github.com/mouncif/DWFE_hali/issues/1#issue-579436886)
 
 ## Development server
 
